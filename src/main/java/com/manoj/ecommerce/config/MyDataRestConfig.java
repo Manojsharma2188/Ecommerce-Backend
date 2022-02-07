@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.manoj.ecommerce.entity.Country;
+import com.manoj.ecommerce.entity.Order;
 import com.manoj.ecommerce.entity.Product;
 import com.manoj.ecommerce.entity.ProductCategory;
 import com.manoj.ecommerce.entity.State;
@@ -35,11 +36,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
 		HttpMethod[] theUnsupportedActions = { HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH };
 
-		// disable HTTP methods for ProductCategory: PUT, POST and DELETE
-		disableHttpMethods(Product.class, config, theUnsupportedActions);
-		disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
-		disableHttpMethods(Country.class, config, theUnsupportedActions);
-		disableHttpMethods(State.class, config, theUnsupportedActions);
+        // disable HTTP methods for ProductCategory: PUT, POST, DELETE and PATCH
+        disableHttpMethods(Product.class, config, theUnsupportedActions);
+        disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
+        disableHttpMethods(Country.class, config, theUnsupportedActions);
+        disableHttpMethods(State.class, config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
 		// expose entity ids
 		// - get a list of all entity classes from the entity manager
